@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import { error } from "console";
 
@@ -39,3 +40,5 @@ api.interceptors.response.use(
         }
     }
 )
+
+export default api
