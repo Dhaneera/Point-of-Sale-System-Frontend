@@ -1,10 +1,42 @@
-import React from 'react'
+'use client'
 import Image from 'next/image'
 import Login from '@/app/images/Log.gif'
 import Logo from '@/app/images/logo.jpeg'
 import Link from 'next/link'
-
+import { useRouter } from 'next/navigation'
+import { useMutation } from '@tanstack/react-query'
+import {register} from '../../api/register_api/api'
+import { useState } from 'react'
 const page = () => {
+    const router =useRouter()
+
+    const [formData,setFormData]=useState({
+        username:"",
+        password:"",
+      })
+
+    const callApi=useMutation({
+        mutationFn:()=>register(formData),
+        onSuccess:(data)=>{
+            localStorage.setItem('token', data.accessToken);
+            router.push("/dashboard")
+        }
+    })
+    const handleChange = (e:any) => {
+        setFormData((prev:any) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const handleSubmit = (e:any) => {
+        e.preventDefault();
+        if (formData.username === '' || formData.password === '') {
+            setError('Please fill in all fields.');
+        } else {
+            callApi.mutate();
+        }
+    };
     return (
         <div className='h-screen flex w-screen'>
             <div className='w-[30%] mt-[-3%]'>
@@ -20,15 +52,15 @@ const page = () => {
                     <div className='flex w-full items-center flex-col gap-7'>
                         <div className='flex-col flex w-[80%] '>
                             <label className='text-sm font-medium mb-2' htmlFor='email'>Your Email</label>
-                            <input type='text' className=' w-full border rounded-md h-14 px-4 py-3 focus:outline-none focus:border-blue-500 text-center bg-[#f0efef]' name="email" placeholder='ENTER YOUR EMAIL' />
+                            <input type='text' className=' w-full border rounded-md h-14 px-4 py-3 focus:outline-none focus:border-blue-500 text-center bg-[#f0efef]' name="username" placeholder='ENTER YOUR UserName' onChange={(e)=>handleChange(e)} />
                         </div>
                         <div className='flex-col flex w-[80%] '>
                             <label className='text-sm font-medium mb-2' htmlFor='password'>Your Password</label>
-                            <input type='text' className=' w-full border rounded-md h-14 px-4 py-3 focus:outline-none focus:border-blue-500 text-center bg-[#f0efef]' name="password" placeholder='ENTER YOUR PASSWORD' />
+                            <input type='text' className=' w-full border rounded-md h-14 px-4 py-3 focus:outline-none focus:border-blue-500 text-center bg-[#f0efef]' name="password" placeholder='ENTER YOUR PASSWORD' onChange={(e)=>handleChange(e)} />
                         </div>
                     </div>
                     <button
-                        className="bg-[#943138] hover:bg-[#5f2024] mb-5 h-12 text-white font-bold py-2 px-4 rounded-xl w-[80%]" >
+                        className="bg-[#943138] hover:bg-[#5f2024] mb-5 h-12 text-white font-bold py-2 px-4 rounded-xl w-[80%]" onClick={(e)=>handleSubmit(e)}>
                         Register
                     </button>
                     <p className='text-center text-gray-400 text-sm mx-5 max-md:text-xs w-[80%]'>
@@ -44,3 +76,7 @@ const page = () => {
 }
 
 export default page
+function setError(arg0: string) {
+    throw new Error('Function not implemented.')
+}
+

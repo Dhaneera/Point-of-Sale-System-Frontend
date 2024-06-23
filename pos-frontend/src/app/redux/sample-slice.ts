@@ -1,22 +1,41 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface count{
-    value:number
+interface cart{
+    id: number;
+    name: string;
+    price: number;
+    quantity: number;
+}
+interface carts{
+    carts: cart[];
+}
+const initialState:carts={
+    carts:[
+        {
+            id: 0,
+            name: "",
+            price: 0,
+            quantity: 0,
+        },
+    ]
 }
 
-const initialState:count={
-    value:0
-};
-
-const counterSlice = createSlice({
-    name:"counter",
+const cartReducer = createSlice({
+    name: 'cart',
     initialState,
-    reducers:{
-        increment:(state,action:PayloadAction<count>)=>{
-            state.value=action.payload.value
-        }
+    reducers: {
+       addProduct:((state:any,action:PayloadAction<carts>)=>{
+            state=[
+                ...state,
+                action.payload
+            ]
+       }),
+       removeCart:((state:any,action:PayloadAction<carts>)=>{
+        
+       })
     }
 })
 
-export const {increment} = counterSlice.actions
-export default counterSlice.reducer;
+
+export const {addProduct}=cartReducer.actions
+export default cartReducer.actions

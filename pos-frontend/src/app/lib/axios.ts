@@ -3,8 +3,8 @@ import axios from "axios";
 import { error } from "console";
 
 const api= axios.create({
-    baseURL:process.env.NEXT_PUBLIC_BASE_URL,
-    withCredentials:true
+    withCredentials:true,
+    baseURL:process.env.NEXT_PUBLIC_BASE_URL
 })
 api.interceptors.request.use(
     (config:any):any=>{
@@ -28,7 +28,7 @@ api.interceptors.response.use(
         }
         try{
             const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/refresh-token`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}api/auth/refresh-token`,
                 {},
                 {withCredentials:true}
             )
