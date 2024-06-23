@@ -12,6 +12,10 @@ const Page = () => {
   const [isEnabled, setIsEnabled] = useState(true);
   const [formData, setFormData] = useState([]);
   const [pro, setPro] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [hidden, setHidden] = useState(false);
+  const [category,setCategory]=useState("")
 
   const { data: categoriesData, isLoading: categoriesLoading } = useQuery({
     queryKey: ['categories'],
@@ -31,6 +35,7 @@ const Page = () => {
     if (categoriesData && productsData) {
       setFormData(categoriesData);
       setPro(productsData);
+      setAllProducts(productsData);
       setIsEnabled(false);
     }
   }, [categoriesData, productsData]);
@@ -39,17 +44,55 @@ const Page = () => {
     return <div>Loading...</div>;
   }
 
+  function handleSearch(e:any) {
+    const value = e.target.value;
+    setSearchTerm(value);
+    setHidden(true);
+    if (value === "") {
+        setPro(() => {
+            return [
+                ...allProducts
+            ];
+        });
+    } else {
+        setPro(() => {
+            return allProducts.filter((item:any) => {
+                return item.name.toLowerCase().includes(value.toLowerCase());
+            });
+        });
+    }
+  }
+  function chooseCategory(e:any){
+    const value=e.target.name;
+    if(category==value){
+        setCategory("")
+        setPro(() => {
+            return [
+                ...allProducts
+            ];
+        });
+    }else{
+        setCategory(value)
+        setPro(() => {
+            return allProducts.filter((item:any) => {
+                return item.category.name.toLowerCase().includes(value.toLowerCase());
+            });
+        });
+    }
+  }
+
   return (
     <div className='bg-[#F0F3FF] flex h-screen'>
-      <div className='w-[70%] h-full'>
+      <div className='w-[70%] min-w-[1160px] h-full'>
         <div className='flex w-full justify-between mt-5'>
           <div className='w-[80%] flex ml-4'>
             <input
               type='text'
               placeholder='Search anything...'
               className='relative rounded-full placeholder:text-color-black h-12 px-5 pl-5 placeholder:pl-8 py-1 w-[30%] bg-white'
+              onChange={handleSearch}
             />
-            <Search width={15} className='absolute top-8 ml-4' />
+            <Search width={15} className={`absolute top-8 ml-4 ${hidden === true ? "hidden" : ""}`} />
           </div>
           <button className='rounded-full h-12 border-2 px-5 mr-4 border-red-500 text-white font-bold bg-red-800 truncate'>
             Orders
@@ -57,7 +100,7 @@ const Page = () => {
         </div>
         <div className='flex'>
           {Array.isArray(formData) && formData.map((element:any) => (
-            <Category key={element.id} info={element} />
+            <Category key={element.name} active={category} function={chooseCategory} info={element} />
           ))}
         </div>
         <div>
