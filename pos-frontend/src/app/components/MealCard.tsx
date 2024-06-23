@@ -57,7 +57,7 @@ const MealCard = (props: any) => {
   }
 
   return (
-    <div className='bg-white shadow-xl w-[95%] mt-8 rounded-lg'>
+    <div className='bg-white shadow-xl w-[85%] mt-8 rounded-lg'>
       <div className='flex flex-col gap-0'>
         <Image src={all} alt='product image' className=' select-none rounded-md' />
         <h1 className='font-semibold text-xl px-4 pt-5 select-none'>{props.info.name}</h1>

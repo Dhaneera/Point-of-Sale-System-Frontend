@@ -82,8 +82,8 @@ const Page = () => {
   }
 
   return (
-    <div className='bg-[#F0F3FF] flex h-screen'>
-      <div className='w-[70%] min-w-[1160px] h-full'>
+    <div className='bg-[#F0F3FF] w-full flex h-screen'>
+      <div className='w-[80%] h-full'>
         <div className='flex w-full justify-between mt-5'>
           <div className='w-[80%] flex ml-4'>
             <input
@@ -106,7 +106,7 @@ const Page = () => {
         <div>
           <h3 className='mt-10 ml-6 text-3xl font-bold'>Burger Town Menu</h3>
         </div>
-        <div className='grid grid-cols-4 h-max ml-6 mt-6'>
+        <div className='grid grid-cols-3 h-max ml-6 mt-6'>
           {Array.isArray(pro) && pro.map((element:any) => (
             <MealCard key={element.id} info={element} />
           ))}
