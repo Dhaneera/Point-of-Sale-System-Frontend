@@ -18,22 +18,25 @@ import {
 
 } from '@heroicons/react/24/outline'
 import Link from 'next/link'
-const navigation = [
-    { name: 'Home', href: '/dashboard', icon: HomeIcon, current: false },
-    { name: 'Product', href: '/product', icon: ShoppingBagIcon, current: false },
-    { name: 'Customers', href: '/customers', icon: UserIcon, current: false },
-    { name: 'Orders', href: '/orders', icon: ClipboardIcon, current: false },
-    { name: 'Users', href: '/admin/users', icon: UsersIcon, current: false },
-    { name: 'Categories', href: '/categories', icon: Squares2X2Icon, current: false },
-    { name: 'LogOut', href: '/', icon: PowerIcon, current: false },
 
-]
 
 
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
 }
 export default function StoreNavbar() {
+    const navigation = [
+    { name: 'Home', href: '/dashboard', icon: HomeIcon, current: false },
+    { name: 'Product', href: '/product', icon: ShoppingBagIcon, current: false },
+    { name: 'Customers', href: '/customers', icon: UserIcon, current: false },
+    { name: 'Orders', href: '/orders', icon: ClipboardIcon, current: false },
+    { name: 'Users', href: '/users', icon: UsersIcon, current: false },
+    { name: 'Categories', href: '/categories', icon: Squares2X2Icon, current: false },
+    { name: 'LogOut', href: '/', icon: PowerIcon, current: false },
+
+]
+    const privilage=localStorage.getItem("privilage")
+    console.log(privilage)
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const [hoveredItem, setHoveredItem]:any = useState(null);
 

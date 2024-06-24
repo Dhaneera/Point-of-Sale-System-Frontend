@@ -25,6 +25,7 @@ const Page = () => {
       console.log(data);
       if (data.accessToken) {
         localStorage.setItem('token', data.accessToken);
+        localStorage.setItem('privilage',data.roles[0])
        router.push('/dashboard');
       }
     },

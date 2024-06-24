@@ -1,12 +1,32 @@
-import api from "@/app/lib/axios"
-import axios from "axios"
+import api from "@/app/lib/axios";
+import axios from "axios";
 
-export const getAllcategories = async ()=>{
-    try {
-        const url="http://localhost:8080/category/api/getAll"
-        const promise=await api.get(url)
-        return promise.data
-    }catch(error){
-        return Promise.reject
-    }
-}
+export const getAllcategories = async () => {
+  try {
+    const url:any = process.env.NEXT_PUBLIC_GET_ALL_CATEGORIES;
+    const promise = await api.get(url);
+    return promise.data;
+  } catch (error) {
+    return Promise.reject;
+  }
+};
+
+export const deleteCategoriesByName = async (name: any) => {
+  try {
+    const url = "http://localhost:8080/category/api/delete/" + name;
+    const promise = await api.delete(url);
+    return promise.data;
+  } catch (error) {
+    return Promise.reject("something went wrong");
+  }
+};
+
+export const addCategories = async (data: any) => {
+  try {
+    const url = "http://localhost:8080/category/api/add";
+    const promise = await api.post(url, data);
+    return promise.data;
+  } catch (error) {
+    return Promise.reject("something went wrong");
+  }
+};

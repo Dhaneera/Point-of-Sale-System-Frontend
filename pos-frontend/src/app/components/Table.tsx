@@ -9,12 +9,13 @@ const Table = (props: any) => {
             case "Product":
                 return (
                     <tr>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>id</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>name</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>category</td>                       
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>qty</td>                       
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>price</td> 
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>Action</td>               
+                        <td className='w-[14.266%] text-center py-2 bg-[#943138] border-r-2 text-white'>id</td>
+                        <td className='w-[14.266%] text-center py-2 bg-[#943138] border-r-2 text-white'>name</td>
+                        <td className='w-[14.266%] text-center py-2 bg-[#943138] border-r-2 text-white'>category</td>                       
+                        <td className='w-[14.266%] text-center py-2 bg-[#943138] border-r-2 text-white'>qty</td> 
+                        <td className='w-[14.266%] text-center py-2 bg-[#943138] border-r-2 text-white'>Description</td>                       
+                        <td className='w-[14.266%] text-center py-2 bg-[#943138] border-r-2 text-white'>price</td> 
+                        <td className='w-[14.266%] text-center py-2 bg-[#943138] border-r-2 text-white'>Action</td>               
                     </tr>
                 );
             case 'Customers':
@@ -32,10 +33,10 @@ const Table = (props: any) => {
             case 'Categories':
                 return (
                     <tr>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>id</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>order id</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>name</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>qty</td>
+                        <td className='w-[33.3%] text-center py-2 bg-[#943138] border-r-2 text-white'>Id</td>
+                        <td className='w-[33.3%] text-center py-2 bg-[#943138] border-r-2 text-white'>Category Name</td>
+                        <td className='w-[33.3%] text-center py-2 bg-[#943138] border-r-2 text-white'>Action</td>
+                    
                     </tr>
                 );
             case 'Orders':
@@ -47,17 +48,25 @@ const Table = (props: any) => {
                         <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>customer</td>
                     </tr>
                 );
-            case 'Stocks':
-                return (
-                    <tr>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>id</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>name</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>products</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>qty</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>price</td>
-                    </tr>
-                );
-            default:
+                case 'Stocks':
+                    return (
+                        <tr>
+                            <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>id</td>
+                            <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>name</td>
+                            <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>products</td>
+                            <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>qty</td>
+                            <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>price</td>
+                        </tr>
+                    );
+                    case 'Users':
+                        return (
+                            <tr>
+                                <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>User Id</td>
+                                <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>User Name</td>
+                                <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>User Roles</td>
+                            </tr>
+                        );
+                default:
                 return (
                     <tr>
                         <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2'>id</td>
@@ -121,7 +130,7 @@ const Table = (props: any) => {
                 <tbody>
                     {renderTableHeaders()}
                     {props.data?.map((element: any) => (
-                        <TableRow key={element.id} style={++count % 2 === 0 ? 'bg-white' : ''} id={count} element={element} />
+                        <TableRow key={element.id} style={++count % 2 === 0 ? 'bg-white' : ''} type={props.type} id={count} element={element} />
                     ))}
                 </tbody>
             </table>

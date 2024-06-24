@@ -7,13 +7,17 @@ import { deleteCustomerById, getAllCustomers } from "@/app/api/customer_api/api"
 import { useDispatch, useSelector } from "react-redux";
 import { addCustomer } from "@/app/redux/CustomerSlice";
 import { RootState } from "@/app/redux/store";
+import Loading from "../loading/page";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router=useRouter();
   const selector=useSelector((state:RootState)=>state.customerSlice.customers);
   console.log(selector)
   const [enabled, setEnabled] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch=useDispatch();
+  
   const { data: customersData, isLoading, isError, error } = useQuery({
     queryKey: ['customers'],
     queryFn: getAllCustomers,
@@ -21,6 +25,10 @@ const Page = () => {
     retryDelay: 5000,
     enabled: enabled
   });
+
+  if(isError){
+    router.push("/error500")
+  }
   useEffect(() => {
     if (customersData) {
       const formattedData = customersData.map((element: any) => ({
@@ -36,42 +44,8 @@ const Page = () => {
     }
   }, [customersData]);
 
-  // const handleSearch = (event: ChangeEvent<HTMLInputElement>): void => {
-  //   const value = event.target.value.toLowerCase();
-  //   setSearchTerm(value);
-  //   if (value === "") {
-  //     setData(customersData.map((element: any) => ({
-  //       id: element.id,
-  //       name: element.name,
-  //       email: element.mail,
-  //       phone: element.phone,
-  //       address: element.address,
-  //       button: <button>Hello World</button>
-  //     })));
-  //   } else {
-  //     setData(customersData.filter((item: any) =>
-  //       item.name.toLowerCase().includes(value) ||
-  //       item.email.toLowerCase().includes(value) ||
-  //       item.phone.toLowerCase().includes(value) ||
-  //       item.address.toLowerCase().includes(value)
-  //     ).map((element: any) => ({
-  //       id: element.id,
-  //       name: element.name,
-  //       email: element.mail,
-  //       phone: element.phone,
-  //       address: element.address,
-  //       button: "Delete"
-  //     })));
-  //   }
-  // };
-
   if (isLoading) {
-    return <div>Loading....</div>;
-  }
-
-  if (isError) {
-    console.error(error);
-    return <div>Error loading data</div>;
+    return <Loading/>
   }
 
   return (

@@ -6,9 +6,12 @@ import { getAllcategories } from '@/app/api/categories_api/api';
 import Category from '@/app/components/Category';
 import MealCard from '@/app/components/MealCard';
 import Cart from '@/app/components/Cart';
-import getAllProducts from '@/app/api/product_api/getAll.api';
+import getAllProducts from '@/app/api/product_api/api';
+import { useRouter } from 'next/navigation';
+import Loading from '../loading/page';
 
 const Page = () => {
+    const router=useRouter();
   const [isEnabled, setIsEnabled] = useState(true);
   const [formData, setFormData] = useState([]);
   const [pro, setPro] = useState([]);
@@ -17,14 +20,14 @@ const Page = () => {
   const [hidden, setHidden] = useState(false);
   const [category,setCategory]=useState("")
 
-  const { data: categoriesData, isLoading: categoriesLoading } = useQuery({
+  const { data: categoriesData, isLoading: categoriesLoading,isError:categoriesError } = useQuery({
     queryKey: ['categories'],
     queryFn: getAllcategories,
     staleTime: Infinity,
     enabled: isEnabled,
   });
 
-  const { data: productsData, isLoading: productsLoading } = useQuery({
+  const { data: productsData, isLoading: productsLoading,isError:productError } = useQuery({
     queryKey: ['products'],
     queryFn: getAllProducts,
     staleTime: Infinity,
@@ -41,7 +44,10 @@ const Page = () => {
   }, [categoriesData, productsData]);
 
   if (categoriesLoading || productsLoading) {
-    return <div>Loading...</div>;
+    return <Loading/>
+  }
+  if(productError || categoriesError){
+    router.push("/error500")
   }
 
   function handleSearch(e:any) {
@@ -80,6 +86,9 @@ const Page = () => {
         });
     }
   }
+  function ordersClick(){
+    router.push("/orders")
+  }
 
   return (
     <div className='bg-[#F0F3FF] w-full flex h-screen'>
@@ -94,7 +103,7 @@ const Page = () => {
             />
             <Search width={15} className={`absolute top-8 ml-4 ${hidden === true ? "hidden" : ""}`} />
           </div>
-          <button className='rounded-full h-12 border-2 px-5 mr-4 border-red-500 text-white font-bold bg-red-800 truncate'>
+          <button className='rounded-full h-12 border-2 px-5 mr-4 border-red-500 text-white font-bold bg-red-800 truncate'onClick={ordersClick}>
             Orders
           </button>
         </div>

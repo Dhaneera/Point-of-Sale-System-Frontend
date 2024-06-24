@@ -6,6 +6,7 @@ import { RootState } from '../redux/store';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addCustomer, updateCustomerById } from '../api/customer_api/api';
 import { toast, ToastContainer } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const DetailView = (props: any) => {
   const [toShow, setToShow] = useState(false);
@@ -13,7 +14,7 @@ const DetailView = (props: any) => {
   const [disableAdd, setDisableAdd] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', mail: '', address: '' });
   const customer: any = useSelector((state: RootState) => state.customerSlice.selected);
-
+    const router=useRouter();
   const dispatch = useDispatch();
     const client=useQueryClient();
     client.invalidateQueries({queryKey:["customers"]})
@@ -53,8 +54,10 @@ const DetailView = (props: any) => {
     mutationFn:()=>updateCustomerById(customer[0]?.id,formData),
     onSuccess:()=>{
         alert("customer updated successfully")
-    }
-    //handle error state later
+    },
+    onError:()=>{
+        router.push("/error500")
+      },
     
   })
   const add=useMutation({
@@ -62,7 +65,10 @@ const DetailView = (props: any) => {
     mutationFn:()=>addCustomer(formData),
     onSuccess:()=>{
        alert("customer added successfully")
-    }
+    },
+    onError:()=>{
+        router.push("/error500")
+      },
   })
   function handleAddCustomer() {
     add.mutateAsync();
