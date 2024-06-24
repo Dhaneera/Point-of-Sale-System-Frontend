@@ -9,7 +9,7 @@ const TableData = (props: any) => {
             className='rounded-full h-12 border-2 px-5 mr-4 border-red-500 text-white font-bold text-xs bg-red-800 truncate'
             onClick={props.click}
           >
-            Delete Product
+            Delete
           </button> :
           `${props.value}`
         }

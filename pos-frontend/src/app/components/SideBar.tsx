@@ -21,7 +21,6 @@ import Link from 'next/link'
 const navigation = [
     { name: 'Home', href: '/dashboard', icon: HomeIcon, current: false },
     { name: 'Product', href: '/product', icon: ShoppingBagIcon, current: false },
-    { name: 'Cart', href: '/cart', icon: ShoppingCartIcon, current: false },
     { name: 'Customers', href: '/customers', icon: UserIcon, current: false },
     { name: 'Orders', href: '/orders', icon: ClipboardIcon, current: false },
     { name: 'Users', href: '/admin/users', icon: UsersIcon, current: false },

@@ -19,3 +19,33 @@ export const deleteCustomerById = async(id:number)=>{
         throw new Error("Something went wrong")
     }
 }
+
+export const getCustomerById = async (id:number)=>{
+    try {
+        const url="http://localhost:8080/customer/api/getById/"+id
+        const response=await api.get(url)
+        return response.data
+    }catch(error:any){
+        throw new Error("Something went wrong")
+    }
+}
+
+export const updateCustomerById = async(id:number,data:any)=>{
+    try {
+        const url="http://localhost:8080/customer/api/update/"+id
+        const response=await api.put(url,data)
+        return response.data
+    }catch(error:any){
+        throw new Error("Something went wrong")
+    }
+}
+
+export const addCustomer= async (data:any)=>{
+    try{
+    const url = "http://localhost:8080/customer/api/add";
+    const response=await api.post(url,data)
+    return response.data
+    }catch(error:any){
+        throw new Error("Something went wrong")
+    }
+}

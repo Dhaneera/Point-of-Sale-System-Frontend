@@ -9,11 +9,12 @@ const Table = (props: any) => {
             case "Product":
                 return (
                     <tr>
-                        <td className='w-[20%] text-center py-2 bg-[#943138] border-r-2 text-white'>id</td>
-                        <td className='w-[20%] text-center py-2 bg-[#943138] border-r-2 text-white'>name</td>
-                        <td className='w-[20%] text-center py-2 bg-[#943138] border-r-2 text-white'>category</td>                       
-                        <td className='w-[20%] text-center py-2 bg-[#943138] border-r-2 text-white'>qty</td>                       
-                        <td className='w-[20%] text-center py-2 bg-[#943138] border-r-2 text-white'>price</td>                       
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>id</td>
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>name</td>
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>category</td>                       
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>qty</td>                       
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>price</td> 
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>Action</td>               
                     </tr>
                 );
             case 'Customers':
@@ -120,7 +121,7 @@ const Table = (props: any) => {
                 <tbody>
                     {renderTableHeaders()}
                     {props.data?.map((element: any) => (
-                        <TableRow key={element.id} style={++count % 2 === 0 ? 'bg-white' : ''} element={element} />
+                        <TableRow key={element.id} style={++count % 2 === 0 ? 'bg-white' : ''} id={count} element={element} />
                     ))}
                 </tbody>
             </table>
