@@ -23,14 +23,14 @@ const Page = () => {
   const { data: categoriesData, isLoading: categoriesLoading,isError:categoriesError } = useQuery({
     queryKey: ['categories'],
     queryFn: getAllcategories,
-    staleTime: Infinity,
+    staleTime: 10000,
     enabled: isEnabled,
   });
 
   const { data: productsData, isLoading: productsLoading,isError:productError } = useQuery({
     queryKey: ['products'],
     queryFn: getAllProducts,
-    staleTime: Infinity,
+    staleTime: 10000,
     enabled: isEnabled,
   });
 

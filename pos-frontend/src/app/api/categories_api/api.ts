@@ -13,7 +13,7 @@ export const getAllcategories = async () => {
 
 export const deleteCategoriesByName = async (name: any) => {
   try {
-    const url = "http://localhost:8080/category/api/delete/" + name;
+    const url:any = process.env.NEXT_PUBLIC_DELETE_CATEGORIES+name;
     const promise = await api.delete(url);
     return promise.data;
   } catch (error) {
@@ -23,7 +23,7 @@ export const deleteCategoriesByName = async (name: any) => {
 
 export const addCategories = async (data: any) => {
   try {
-    const url = "http://localhost:8080/category/api/add";
+    const url:any = process.env.NEXT_PUBLIC_ADD_CATEGORIES;
     const promise = await api.post(url, data);
     return promise.data;
   } catch (error) {

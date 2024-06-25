@@ -5,7 +5,7 @@ import Logo from '@/app/images/logo.jpeg'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
-import {register} from '../../api/register_api/api'
+import {register} from '../../api/users_api/api'
 import { useState } from 'react'
 const page = () => {
     const router =useRouter()

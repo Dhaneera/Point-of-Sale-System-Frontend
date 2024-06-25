@@ -6,6 +6,7 @@ import LoginImg from '@/app/images/Log.gif';
 import { useMutation } from '@tanstack/react-query';
 import { login } from './api/logi_api/api';
 import { useRouter } from 'next/navigation';
+import Loading from './(user)/loading/page';
 
 
 
@@ -32,11 +33,11 @@ const Page = () => {
   });
 
   if (callApi.error) {
-    console.log(callApi.error);
+    router.push('/error500')
   }
 
   if (callApi.isPending) {
-    return <div>Loading...</div>;
+    return <Loading/>
   }
 
   function handleChange(e:any) {

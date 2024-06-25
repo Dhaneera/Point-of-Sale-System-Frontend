@@ -22,13 +22,7 @@ const Page = () =>{
     })
     useEffect(() => {
       if (orders.data) {
-        console.log(orders.data);
-        const formattedData = orders.data.map((element: any) => ({
-          id:element.id,
-          name:element.name,
-          
-        }));
-        setData(formattedData);
+        setData(orders.data);
         setEnabled(false);
       }
     }, [orders.data]);

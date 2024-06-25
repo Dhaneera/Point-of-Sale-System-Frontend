@@ -47,7 +47,7 @@ const DetailCategory = (props: any) => {
                
               
                 <div className='flex  w-96  mt-[-8%]  items-center '>
-                    <button className=' rounded-full h-12 border-2 px-5 mr-4 border-green-500 text-white font-bold  bg-green-800' onClick={(e)=>submitCategory(e)}> Add Product</button>
+                    <button className=' rounded-full h-12 border-2 px-5 mr-4 border-green-500 text-white font-bold  bg-green-800' onClick={(e)=>submitCategory(e)}> Add  Category</button>
                 </div>
             </div>
         </div>

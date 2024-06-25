@@ -32,7 +32,7 @@ const Page = () =>{
   }
 
   useEffect(() => {
-    if (product.data!==null||undefined) {
+    if (product.data) {
       const formattedData = product.data?.map((element: any) => (
         {
         id: element.id,

@@ -1,13 +1,15 @@
 import { RootState } from '@/app/redux/store';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CartItem from './CartItem';
 import { useMutation } from '@tanstack/react-query';
 import { addOrder } from '../api/orders_api/api';
 import { useRouter } from 'next/navigation';
+import { removeData } from '../redux/cartSlice';
 
 const Cart = () => {
     const router=useRouter();
+    const dispatch=useDispatch();
     const items = useSelector((state: RootState) => state.cartSlice.carts);
     let total = 0;
     let tax = 0;
@@ -40,6 +42,8 @@ const Cart = () => {
     function handleSubmit(e: any) {
         e.preventDefault();
         add.mutateAsync();
+        dispatch(removeData())
+
     }
 
     return (

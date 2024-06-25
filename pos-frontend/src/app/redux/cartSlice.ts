@@ -40,9 +40,12 @@ const cartReducer = createSlice({
               cart.price -= action.payload.price;
             }
           });
-    }
+    },
+    removeData:((state)=>{
+        state.carts=[];
+    })
   }
 })
 
-export const { addProduct, increaseQuantityPrice, removeCart,decreaseQuantityPrice } = cartReducer.actions;
+export const { addProduct, increaseQuantityPrice, removeCart,decreaseQuantityPrice,removeData } = cartReducer.actions;
 export default cartReducer.reducer;

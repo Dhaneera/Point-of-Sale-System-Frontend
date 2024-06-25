@@ -42,10 +42,10 @@ const Table = (props: any) => {
             case 'Orders':
                 return (
                     <tr>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>id</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>name</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>products</td>
-                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>customer</td>
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>Id</td>
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>Address</td>
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>Phone Number</td>
+                        <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white'>Total</td>
                     </tr>
                 );
                 case 'Stocks':
@@ -61,9 +61,10 @@ const Table = (props: any) => {
                     case 'Users':
                         return (
                             <tr>
-                                <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>User Id</td>
-                                <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>User Name</td>
-                                <td className='w-[16.666%] text-center py-2 bg-[#943138] border-r-2 text-white '>User Roles</td>
+                                <td className='w-[25%] text-center py-2 bg-[#943138] border-r-2 text-white '>User Id</td>
+                                <td className='w-[25%] text-center py-2 bg-[#943138] border-r-2 text-white '>User Name</td>
+                                <td className='w-[25%] text-center py-2 bg-[#943138] border-r-2 text-white '>User Roles</td>
+                                <td className='w-[25%] text-center py-2 bg-[#943138] border-r-2 text-white '>Action</td>
                             </tr>
                         );
                 default:

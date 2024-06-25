@@ -10,6 +10,8 @@ import { deleteProductById } from '../api/product_api/api';
 import { getProduct } from '../redux/productSlice';
 import { deleteCategoriesByName } from '../api/categories_api/api';
 import { useRouter } from 'next/navigation';
+import { deleteUserById } from '../api/users_api/api';
+import { getUser } from '../redux/userSlice';
 
 const TableRow = (props:any) => {
   const router=useRouter();
@@ -43,6 +45,15 @@ const TableRow = (props:any) => {
       router.push("/error500")
     },
   })
+  const deleteUser = useMutation({
+    mutationKey: ['deleteUser', props.element.id],
+    mutationFn: () => deleteUserById(props.element.id),
+    retry:2,
+    retryDelay:5000,
+    onError:()=>{
+      router.push("/error500")
+    }
+  })
   const handleDelete = (e: any) => {
     if(props.type=="Customers"){
     deleteCustomer.mutate();
@@ -51,6 +62,10 @@ const TableRow = (props:any) => {
     }else if(props.type=="Categories"){
       deleteCategory.mutate();
       queryClient.invalidateQueries({ queryKey: ['categories'] });
+      window.location.reload();
+    }else if(props.type=="Users"){
+      deleteUser.mutate();
+      queryClient.invalidateQueries({queryKey:['users']})
       window.location.reload();
     }else{
       deleteProduct.mutate();
@@ -62,6 +77,8 @@ const TableRow = (props:any) => {
   function handleClick(){
     if(props.type=="Customers"){
     dispatch(getCustomer(props.element.id))
+    }else if(props.type=="Users"){
+      dispatch(getUser(props.element.id))
     }
     else{
       dispatch(getProduct(props.element.id))

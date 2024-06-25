@@ -61,7 +61,7 @@ const MealCard = (props: any) => {
       <div className='flex flex-col gap-0'>
         <Image src={all} alt='product image' className=' select-none rounded-md' />
         <h1 className='font-semibold text-xl px-4 pt-5 select-none'>{props.info.name}</h1>
-        <p className='text-gray-500 text-sm px-4 pt-2 select-none'>{props.info.category.name}</p>
+        <p className='text-gray-500 text-sm px-4 pt-2 select-none'>{props.info.category?.name}</p>
         <div className='flex items-center'>
           <h3 className='px-4 pt-4 text-xl font-bold mb-5 select-none'>{`Rs ${props.info.price}`}</h3>
           <div className='border-2 border-gray-100 gap-5 flex  px-2 py-2 rounded-full'>

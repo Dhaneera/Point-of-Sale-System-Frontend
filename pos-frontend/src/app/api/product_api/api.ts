@@ -12,7 +12,8 @@ const getAllProducts = async() => {
 
 
 export const deleteProductById = async(id:any)=>{
-    const url:any ="http://localhost:8080/product/api/delete/"+id;
+    const baseUrl =process.env.NEXT_PUBLIC_REMOVE_PRODUCT;
+     const url = `${baseUrl}${id}`;
     try {
         const promise=await api.delete(url)
         console.log(promise);
@@ -23,7 +24,8 @@ export const deleteProductById = async(id:any)=>{
 }
 
 export const updateProductById = async(id:any,data:any)=>{
-    const url:any ="http://localhost:8080/product/api/update/"+id;
+    const baseUrl =process.env.NEXT_PUBLIC_UPDATE_PRODUCT;
+    const url = `${baseUrl}${id}`;
     try {
         const finalData={
             name:data.name,
@@ -43,7 +45,7 @@ export const updateProductById = async(id:any,data:any)=>{
 
 
 export const addProduct = async(data:any)=>{
-    const url:any ="http://localhost:8080/product/api/add";
+    const url:any =process.env.NEXT_PUBLIC_ADD_PRODUCT;
     const finalData={
         name:data.name,
         price:data.price,
