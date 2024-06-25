@@ -35,8 +35,33 @@ This project is a Point of Sale (POS) system built with React and Next.js. It ai
     npm install
     # or
     yarn install
+
+3. Configure  create.env.development file in the root directory and add below environment variables
+
+   NEXT_PUBLIC_SAMPLE="http://localhost:8080/sample"
+   NEXT_PUBLIC_BASE_URL='http://localhost:8080/'
+   NEXT_PUBLIC_LOGIN=http://localhost:8080/api/auth/login
+   NEXT_PUBLIC_REGISTER=api/auth/register
+   NEXT_PUBLIC_GET_ALL_PRODUCTS=http://localhost:8080/product/api/getAll
+   NEXT_PUBLIC_GET_ALL_CATEGORIES=http://localhost:8080/category/api/getAll
+   NEXT_PUBLIC_DELETE_CATEGORIES=http://localhost:8080/category/api/delete/
+   NEXT_PUBLIC_ADD_CATEGORIES=http://localhost:8080/category/api/add
+   NEXT_PUBLIC_GET_ALL_CUSTOMERS=http://localhost:8080/customer/api/getAll
+   NEXT_PUBLIC_REMOVE_CUSTOMER=http://localhost:8080/customer/api/remove/
+   NEXT_PUBLIC_GETBYID_CUSTOMER=http://localhost:8080/customer/api/getById/
+   NEXT_PUBLIC_UPDATE_CUSTOMER=http://localhost:8080/customer/api/update/
+   NEXT_PUBLIC_ADD_CUSTOMER=http://localhost:8080/customer/api/add
+   NEXT_PUBLIC_GET_ALL_ORDERS=http://localhost:8080/orders/api/getAll
+   NEXT_PUBLIC_ADD_ORDER=http://localhost:8080/orders/api/add
+   NEXT_PUBLIC_ADD_PRODUCT=http://localhost:8080/product/api/add
+   NEXT_PUBLIC_UPDATE_PRODUCT=http://localhost:8080/product/api/update/
+   NEXT_PUBLIC_REMOVE_PRODUCT=http://localhost:8080/product/api/remove/
+   NEXT_PUBLIC_GET_ALL_USERS="http://localhost:8080/user/api/getAll"
+   NEXT_PUBLIC_DELETE_ALL_USERS=http://localhost:8080/user/api/delete/
+   NEXT_PUBLIC_UPDATE_USER=http://localhost:8080/user/api/update/
+   NEXT_PUBLIC_ADD_USER=http://localhost:8080/user/api/add
    
-4. run the application using
+5. run the application using
      make sure to run spring-boot project before running the front-end application use this link (https://github.com/SDW-SWD/Point-of-Sale-System-Backend) to run the backend and database 
 
 
