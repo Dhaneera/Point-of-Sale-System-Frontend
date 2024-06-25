@@ -61,11 +61,25 @@ This project is a Point of Sale (POS) system built with React and Next.js. It ai
    NEXT_PUBLIC_UPDATE_USER=http://localhost:8080/user/api/update/
    NEXT_PUBLIC_ADD_USER=http://localhost:8080/user/api/add
    
-5. run the application using
+4. run the application using
      make sure to run spring-boot project before running the front-end application use this link (https://github.com/SDW-SWD/Point-of-Sale-System-Backend) to run the backend and database 
 
-
- 5 .npm run dev
+5 .npm run dev
     # or
     yarn dev
+
+** PREVIEW **  !!!CAUSTION NEED TO RUN @ 3000 !!!
+<img width="1680" alt="Screenshot 2024-06-25 at 23 00 44" src="https://github.com/SDW-SWD/Point-of-Sale-System-Frontend/assets/54956598/cebc12dc-a9bc-42f6-b795-771a6f03a74b">
+
+<img width="1680" alt="Screenshot 2024-06-25 at 23 01 17" src="https://github.com/SDW-SWD/Point-of-Sale-System-Frontend/assets/54956598/e0c5a13f-2a9d-4263-aec5-00785c0690b9">
+<img width="1680" alt="Screenshot 2024-06-25 at 22 57 38" src=<img width="1680" alt="Screenshot 2024-06-25 at 22 57 46" src="https://github.com/SDW-SWD/Point-of-Sale-System-Frontend/assets/54956598/eb5078e6-4be4-4df3-8eaf-e2145453b428">
+
+
+<img width="1680" alt="Screenshot 2024-06-25 at 22 57 46" src="https://github.com/SDW-SWD/Point-of-Sale-System-Frontend/assets/54956598/386bd3c2-d921-4283-aa8b-61f753ff2b77">
+
+<img width="1680" alt="Screenshot 2024-06-25 at 22 57 55" src="https://github.com/SDW-SWD/Point-of-Sale-System-Frontend/assets/54956598/7b85f771-2094-4857-97cd-5080cfb16cd1">
+
+
+
+
 
