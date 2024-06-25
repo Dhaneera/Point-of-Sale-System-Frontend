@@ -7,10 +7,9 @@ This project is a Point of Sale (POS) system built with React and Next.js. It ai
 ## Features
 - **User Authentication**: Secure login and registration for staff.
 - **Product Management**: Add, edit, and delete products.
-- **Inventory Tracking**: Monitor stock levels and receive notifications for low stock.
-- **Sales Processing**: Process sales and generate receipts.
-- **Customer Management**: Maintain customer information and purchase history.
-- **Reporting**: Generate sales reports and analytics.
+- **Sales Processing**: Process sales.
+- **Customer Management**: Maintain customer information.
+
 
 ## Technologies Used
 - **Frontend**: React, Next.js, Tailwind CSS
