@@ -78,6 +78,7 @@ const DetailView = (props: any) => {
 
   function handleUpdateCustomer() {
     put.mutateAsync();
+    window.location.reload();
   }
 
   function handleRowClick(selectedCustomer: any) {

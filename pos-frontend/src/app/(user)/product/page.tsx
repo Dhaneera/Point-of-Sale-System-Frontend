@@ -17,23 +17,23 @@ const Page = () =>{
   const [isEnable, setEnabled] = useState(true);
   const dispatch=useDispatch();
   const data=useSelector((state:RootState)=>state.productSlice.customers)
-  const product=useQuery({
+  const {data:productData,isLoading:loading,isError:error}=useQuery({
     queryKey: ['products'],
     queryFn: () => getAllProducts(),
     retry:2,
     retryDelay:5000,
     enabled:isEnable
   })
-  if(product.isLoading){
+  if(loading){
     return <Loading/>
   }
-  if(product.isError){
+  if(error){
     router.push("/error500")
   }
 
   useEffect(() => {
-    if (product.data) {
-      const formattedData = product.data?.map((element: any) => (
+    if (productData) {
+      const formattedData = productData?.map((element: any) => (
         {
         id: element.id,
         name: element.name,
@@ -44,11 +44,10 @@ const Page = () =>{
         button:"Delete"
       }));
       setEnabled(false);
-      console.log(product.data)
       dispatch(addProduct(formattedData))
       
     }
-  }, [product.data]);
+  }, [productData]);
 
       return (
        <div className="  flex flex-col min-h-screen w-full ">

@@ -1,7 +1,8 @@
+'use client'
 import React from 'react'
 import Error from '@/app/images/error500.png'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 const page = () => {
   const router=useRouter();

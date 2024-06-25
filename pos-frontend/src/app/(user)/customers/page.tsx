@@ -50,14 +50,6 @@ const Page = () => {
 
   return (
     <div className="flex flex-col min-h-screen w-full">
-      <div className='flex ml-28 mt-10'>
-        <input
-          type='text'
-          placeholder='Search Customers'
-          className='relative rounded-full placeholder:text-color-black h-12 px-5 pl-5 placeholder:pl-8 py-1 w-[30%] bg-white'
-          // onChange={handleSearch}
-        />
-      </div>
       <div className="mt-20 px-24">
         <Table data={selector} type="Customers" />
       </div>
