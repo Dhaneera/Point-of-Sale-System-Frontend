@@ -18,7 +18,7 @@ This project is a Point of Sale (POS) system built with React and Next.js. It ai
 - **API Calls**: React Query, Axios
 - **Icons**: Headless UI Icons
 - **Authentication**: NextAuth.js
-- **Database**: MongoDB (via Mongoose)
+- **Database**: MongoDB (via MYSQL)
 
 ## Getting Started
 
