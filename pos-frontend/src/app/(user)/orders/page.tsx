@@ -35,10 +35,6 @@ const Page = () =>{
     }
       return (
        <div className="  flex flex-col min-h-screen w-full ">
-        <div className='flex  ml-28 mt-10  '>
-              <input type='text' placeholder='Search Category...' className=' relative rounded-full placeholder:text-color-black h-12 px-5 pl-5 placeholder:pl-8 py-1 w-[30%] bg-white'></input>
-            <Search width={15} className='absolute mt-3 ml-4' />
-        </div>
         <div className="mt-20  px-24">
           <Table data={data} type="Orders" />
         </div>
