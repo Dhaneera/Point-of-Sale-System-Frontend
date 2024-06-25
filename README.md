@@ -38,8 +38,10 @@ This project is a Point of Sale (POS) system built with React and Next.js. It ai
     yarn install
    
 4. run the application using
-    ** make sure to run springbbot project befor running the froned application use  this link (https://github.com/SDW-SWD/Point-of-Sale-System-Backend) to run the backend and database 
-    npm run dev
+     make sure to run spring-boot project before running the front-end application use this link (https://github.com/SDW-SWD/Point-of-Sale-System-Backend) to run the backend and database 
+
+
+ 5 .npm run dev
     # or
     yarn dev
 
